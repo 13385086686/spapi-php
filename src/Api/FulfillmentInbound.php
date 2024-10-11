@@ -419,6 +419,17 @@ class FulfillmentInbound extends Client {
     ]);
   }
 
+    /**
+     * Operation listInboundPlans
+     *
+     * @param array $queryParams
+     *    - *pageSize* integer
+     *    - *paginationToken* string
+     *    - *status* string
+     *    - *sortBy* string
+     *    - *sortOrder* string
+     *
+     */
   public function listInboundPlans($queryParams = [])
   {
       return $this->send("/inbound/fba/2024-03-20/inboundPlans", [
@@ -434,4 +445,20 @@ class FulfillmentInbound extends Client {
           'query' => $queryParams,
       ]);
   }
+
+    public function createInboundPlan($queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function createInboundPlanAsync($queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
 }
