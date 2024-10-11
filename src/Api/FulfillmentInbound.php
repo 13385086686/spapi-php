@@ -418,4 +418,20 @@ class FulfillmentInbound extends Client {
       'query' => $queryParams,
     ]);
   }
+
+  public function listInboundPlans($queryParams = [])
+  {
+      return $this->send("/inbound/fba/2024-03-20/inboundPlans", [
+          'method' => 'GET',
+          'query' => $queryParams,
+      ]);
+  }
+
+  public function listInboundPlansAsync($queryParams = [])
+  {
+      return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans", [
+          'method' => 'GET',
+          'query' => $queryParams,
+      ]);
+  }
 }
