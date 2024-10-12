@@ -419,17 +419,17 @@ class FulfillmentInbound extends Client {
     ]);
   }
 
-    /**
-     * Operation listInboundPlans
-     *
-     * @param array $queryParams
-     *    - *pageSize* integer
-     *    - *paginationToken* string
-     *    - *status* string
-     *    - *sortBy* string
-     *    - *sortOrder* string
-     *
-     */
+  /**
+   * Operation listInboundPlans
+   *
+   * @param array $queryParams
+   *    - *pageSize* integer
+   *    - *paginationToken* string
+   *    - *status* string
+   *    - *sortBy* string
+   *    - *sortOrder* string
+   *
+   */
   public function listInboundPlans($queryParams = [])
   {
       return $this->send("/inbound/fba/2024-03-20/inboundPlans", [
@@ -446,18 +446,930 @@ class FulfillmentInbound extends Client {
       ]);
   }
 
-    public function createInboundPlan($queryParams = [])
+    /**
+     * Operation createInboundPlan
+     *
+     * @param array $queryParams
+     *    - *destinationMarketplaces* string
+     *    - *items* array
+     *    - *name* string
+     *    - *sourceAddress* array
+     *
+     */
+  public function createInboundPlan($queryParams = [])
+  {
+      return $this->send("/inbound/fba/2024-03-20/inboundPlans", [
+          'method' => 'POST',
+          'query' => $queryParams,
+      ]);
+  }
+
+  public function createInboundPlanAsync($queryParams = [])
+  {
+      return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans", [
+          'method' => 'POST',
+          'query' => $queryParams,
+      ]);
+  }
+
+    /**
+     * Operation getInboundPlan
+     *
+     * @param array $queryParams
+     *
+     */
+    public function getInboundPlan($inboundPlanId, $queryParams = [])
     {
-        return $this->send("/inbound/fba/2024-03-20/inboundPlans", [
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function getInboundPlanAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listInboundPlanBoxes
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listInboundPlanBoxes($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/boxes", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listInboundPlanBoxesAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/boxes", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation cancelInboundPlan
+     *
+     * @param array $queryParams
+     *
+     */
+    public function cancelInboundPlan($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/cancellation", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function cancelInboundPlanAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/cancellation", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listInboundPlanItems
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listInboundPlanItems($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/items", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listInboundPlanItemsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/items", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation updateInboundPlanName
+     *
+     * @param array $queryParams
+     *
+     */
+    public function updateInboundPlanName($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/name", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function updateInboundPlanNameAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/name", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listPackingGroupBoxes
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listPackingGroupBoxes($inboundPlanId, $packingGroupId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingGroups/{$packingGroupId}/boxes", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listPackingGroupBoxesAsync($inboundPlanId, $packingGroupId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingGroups/{$packingGroupId}/boxes", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listPackingGroupItems
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listPackingGroupItems($inboundPlanId, $packingGroupId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingGroups/{$packingGroupId}/items", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listPackingGroupItemsAsync($inboundPlanId, $packingGroupId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingGroups/{$packingGroupId}/items", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation setPackingInformation
+     *
+     * @param array $queryParams
+     *
+     */
+    public function setPackingInformation($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingInformation", [
             'method' => 'POST',
             'query' => $queryParams,
         ]);
     }
 
-    public function createInboundPlanAsync($queryParams = [])
+    public function setPackingInformationAsync($inboundPlanId, $queryParams = [])
     {
-        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans", [
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingInformation", [
             'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listPackingOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listPackingOptions($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listPackingOptionsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation generatePackingOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function generatePackingOptions($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function generatePackingOptionsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation confirmPackingOption
+     *
+     * @param array $queryParams
+     *
+     */
+    public function confirmPackingOption($inboundPlanId, $packingOptionId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingOptions/{$packingOptionId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function confirmPackingOptionAsync($inboundPlanId, $packingOptionId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/packingOptions/{$packingOptionId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listInboundPlanPallets
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listInboundPlanPallets($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/pallets", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listInboundPlanPalletsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/pallets", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listPlacementOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listPlacementOptions($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/placementOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listPlacementOptionsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/placementOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation generatePlacementOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function generatePlacementOptions($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/placementOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function generatePlacementOptionsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/placementOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation confirmPlacementOption
+     *
+     * @param array $queryParams
+     *
+     */
+    public function confirmPlacementOption($inboundPlanId, $placementOptionId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/placementOptions/{$placementOptionId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function confirmPlacementOptionAsync($inboundPlanId, $placementOptionId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/placementOptions/{$placementOptionId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation getShipment
+     *
+     * @param array $queryParams
+     *
+     */
+    public function getShipment($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function getShipmentAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listShipmentBoxes
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listShipmentBoxes($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/boxes", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listShipmentBoxesAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/boxes", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listShipmentContentUpdatePreviews
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listShipmentContentUpdatePreviews($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listShipmentContentUpdatePreviewsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation generateShipmentContentUpdatePreviews
+     *
+     * @param array $queryParams
+     *
+     */
+    public function generateShipmentContentUpdatePreviews($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function generateShipmentContentUpdatePreviewsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation getShipmentContentUpdatePreview
+     *
+     * @param array $queryParams
+     *
+     */
+    public function getShipmentContentUpdatePreview($inboundPlanId, $shipmentId, $contentUpdatePreviewId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews/{$contentUpdatePreviewId}", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function getShipmentContentUpdatePreviewAsync($inboundPlanId, $shipmentId, $contentUpdatePreviewId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews/{$contentUpdatePreviewId}", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation confirmShipmentContentUpdatePreview
+     *
+     * @param array $queryParams
+     *
+     */
+    public function confirmShipmentContentUpdatePreview($inboundPlanId, $shipmentId, $contentUpdatePreviewId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews/{$contentUpdatePreviewId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function confirmShipmentContentUpdatePreviewAsync($inboundPlanId, $shipmentId, $contentUpdatePreviewId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/contentUpdatePreviews/{$contentUpdatePreviewId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation getDeliveryChallanDocument
+     *
+     * @param array $queryParams
+     *
+     */
+    public function getDeliveryChallanDocument($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryChallanDocument", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function getDeliveryChallanDocumentAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryChallanDocument", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listDeliveryWindowOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listDeliveryWindowOptions($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryWindowOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listDeliveryWindowOptionsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryWindowOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation generateDeliveryWindowOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function generateDeliveryWindowOptions($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryWindowOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function generateDeliveryWindowOptionsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryWindowOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation confirmDeliveryWindowOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function confirmDeliveryWindowOptions($inboundPlanId, $shipmentId, $deliveryWindowOptionId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryWindowOptions/{$deliveryWindowOptionId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function confirmDeliveryWindowOptionsAsync($inboundPlanId, $shipmentId, $deliveryWindowOptionId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/deliveryWindowOptions/{$deliveryWindowOptionId}/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listShipmentItems
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listShipmentItems($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/items", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listShipmentItemsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/items", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation updateShipmentName
+     *
+     * @param array $queryParams
+     *
+     */
+    public function updateShipmentName($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/name", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function updateShipmentNameAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/name", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listShipmentPallets
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listShipmentPallets($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/pallets", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listShipmentPalletsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/pallets", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation cancelSelfShipAppointment
+     *
+     * @param array $queryParams
+     *
+     */
+    public function cancelSelfShipAppointment($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentCancellation", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function cancelSelfShipAppointmentAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentCancellation", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation getSelfShipAppointmentSlots
+     *
+     * @param array $queryParams
+     *
+     */
+    public function getSelfShipAppointmentSlots($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentSlots", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function getSelfShipAppointmentSlotsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentSlots", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation generateSelfShipAppointmentSlots
+     *
+     * @param array $queryParams
+     *
+     */
+    public function generateSelfShipAppointmentSlots($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentSlots", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function generateSelfShipAppointmentSlotsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentSlots", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation scheduleSelfShipAppointment
+     *
+     * @param array $queryParams
+     *
+     */
+    public function scheduleSelfShipAppointment($inboundPlanId, $shipmentId, $slotId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentSlots/{$slotId}/schedule", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function scheduleSelfShipAppointmentAsync($inboundPlanId, $shipmentId, $slotId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/selfShipAppointmentSlots/{$slotId}/schedule", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation updateShipmentSourceAddress
+     *
+     * @param array $queryParams
+     *
+     */
+    public function updateShipmentSourceAddress($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/sourceAddress", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function updateShipmentSourceAddressAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/sourceAddress", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation updateShipmentTrackingDetails
+     *
+     * @param array $queryParams
+     *
+     */
+    public function updateShipmentTrackingDetails($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/trackingDetails", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function updateShipmentTrackingDetailsAsync($inboundPlanId, $shipmentId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/shipments/{$shipmentId}/trackingDetails", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listTransportationOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listTransportationOptions($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/transportationOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listTransportationOptionsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/transportationOptions", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation generateTransportationOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function generateTransportationOptions($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/transportationOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function generateTransportationOptionsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/transportationOptions", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation confirmTransportationOptions
+     *
+     * @param array $queryParams
+     *
+     */
+    public function confirmTransportationOptions($inboundPlanId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/transportationOptions/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function confirmTransportationOptionsAsync($inboundPlanId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/inboundPlans/{$inboundPlanId}/transportationOptions/confirmation", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation listItemComplianceDetails
+     *
+     * @param array $queryParams
+     *
+     */
+    public function listItemComplianceDetails($queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/items/compliance", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function listItemComplianceDetailsAsync($queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/items/compliance", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation updateItemComplianceDetails
+     *
+     * @param array $queryParams
+     *
+     */
+    public function updateItemComplianceDetails($queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/items/compliance", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function updateItemComplianceDetailsAsync($queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/items/compliance", [
+            'method' => 'PUT',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation createMarketplaceItemLabels
+     *
+     * @param array $queryParams
+     *
+     */
+    public function createMarketplaceItemLabels($queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/items/labels", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function createMarketplaceItemLabelsAsync($queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/items/labels", [
+            'method' => 'POST',
+            'query' => $queryParams,
+        ]);
+    }
+
+    /**
+     * Operation getInboundOperationStatus
+     *
+     * @param array $queryParams
+     *
+     */
+    public function getInboundOperationStatus($operationId, $queryParams = [])
+    {
+        return $this->send("/inbound/fba/2024-03-20/operations/{$operationId}", [
+            'method' => 'GET',
+            'query' => $queryParams,
+        ]);
+    }
+
+    public function getInboundOperationStatusAsync($operationId, $queryParams = [])
+    {
+        return $this->sendAsync("/inbound/fba/2024-03-20/operations/{$operationId}", [
+            'method' => 'GET',
             'query' => $queryParams,
         ]);
     }
